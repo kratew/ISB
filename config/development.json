@@ -1,0 +1,16 @@
+{
+  "env" : "development",
+  "fqdn" : "localhost",
+  "server" : {
+    "listen" : {"port" : 3003}
+  },
+  "mysql" : {
+    "dbconn" : {
+      "host" : "45.119.146.33",
+      "user" : "root",
+      "password" : "kkrY;jk3tvrs",
+      "port" : 3306,
+      "database" : ""
+    }
+  }
+}

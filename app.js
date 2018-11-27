@@ -22,6 +22,7 @@
 process.env.NODE_ENV = ( process.env.NODE_ENV && ( process.env.NODE_ENV ).trim().toLowerCase() == 'production' ) ? 'production' : 'development';
 
 var express = require('express');
+var fs = require('fs');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
 var app = express();

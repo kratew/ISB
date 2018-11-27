@@ -41,7 +41,7 @@ if(process.env.NODE_ENV === "production") {
     global.config = JSON.parse(fs.readFileSync('./config/development.json'));
 }
 
-global.dbpool = mysql.createpool(config.mysql.dbconn);  // mysql global 변수 설정.
+global.dbpool = mysql.createPool(config.mysql.dbconn);  // mysql global 변수 설정.
 
 app.use('/', express.static(__dirname + '/public')); // public 디렉토리 사용 설정.
 

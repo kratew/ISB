@@ -1,8 +1,8 @@
 {
   "env" : "production",
-  "fqdn" : "106.10.52.129",
+  "fqdn" : "45.119.146.33",
   "server" : {
-    "listen" : {"port" : 1024}
+    "listen" : {"port" : 33775}
   },
   "mysql" : {
     "dbconn" : {

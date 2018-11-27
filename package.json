@@ -1,0 +1,22 @@
+{
+  "name": "isb",
+  "version": "1.0.0",
+  "description": "Imaging Sensor for the Blinds",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kratew/ISB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kratew/ISB/issues"
+  },
+  "homepage": "https://github.com/kratew/ISB#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

@@ -18,4 +18,8 @@ echo " * Deploy"
 
 popd
 
+echo " pm2 restart ISB"
+
+pm2 restart ISB
+
 echo "---------End----------"

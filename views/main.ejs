@@ -1,7 +1,9 @@
 <% include include/header %>
 
-
-    <div id="main" class="scroll-container">
+    <html id="main" class="scroll-container">
+        <!-- Main Page Section -->
+        <section class="section1">
+        </section>
         <!-- About Us Section -->
         <section class="section2">
             <div>
@@ -33,7 +35,7 @@
             </div>
         </section>
         <!-- Team section -->
-        <section class="section7">
+        <section class="section3">
             <div>
                 <div class="leftBox title">
                     <h2 class="White">Team</h2>
@@ -48,8 +50,10 @@
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+
+        <% include include/footer %>
+
+
 
     <!-- Swiper JS -->
     <script src="./js/jquery-2.1.1.min.js"></script>
@@ -72,9 +76,9 @@
                         delta = event.wheelDelta / 120;
                         if (window.opera) delta = -delta;
                     } else if (event.detail) delta = -event.detail / 3;
-                    var moveTop = null;
-                    var idx = $this_mouseEvent.index();
-                    var secL = $('section').length;
+                    var moveTop	= null;
+                    var idx		= $this_mouseEvent.index();
+                    var secL	= $('section').length;
                     // 마우스휠을 위에서 아래로
                     if (delta < 0) {
                         if ($this_mouseEvent.next().index() < secL && $this_mouseEvent.next().index() != -1) {
@@ -95,8 +99,8 @@
                     $("html, body").stop().animate({
                         scrollTop: moveTop
                     }, {
-                            duration: 500, complete: function () { }
-                        });
+                        duration: 500, complete: function () { }
+                    });
                 });
             });
 
@@ -197,4 +201,4 @@
             });
         });
     </script>
-</body>
+</html>

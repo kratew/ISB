@@ -16,5 +16,15 @@ module.exports = function(){
         console.log("Main Page Rendered.");
     });
 
+    router.get('signin', function(req, res){
+        res.render('./signin', {title: "로그인"});
+        console.log("Sign In Page Rendered.");
+    });
+
+    router.get('signup', function(req, res){
+        res.render('./signup', {title: "회원가입"});
+        console.log("Sign Up Page Rendered.");
+    });
+
     return router;
 };

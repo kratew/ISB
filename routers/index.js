@@ -26,5 +26,10 @@ module.exports = function(){
         console.log("Sign Up Page Rendered.");
     });
 
+    router.get('/map', function(req, res){
+        res.render('./map', {title: "회원가입"});
+        console.log("Sign Up Page Rendered.");
+    });
+
     return router;
 };

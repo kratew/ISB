@@ -1,7 +1,7 @@
-
+.section9 > div { margin-top:4%; }
+.section9 > div .leftBox { float: initial; height: 5%;}
 .section9 > div .rightBox { height: 80%; width: 85%; float: left;}
 
-.section9 > div .leftBox { float: initial; height: 5%;}
 #map_div { height: 98%; position: relative; margin-left: 3% }
 #Tmap_Map { width: 100%; height: 100%; border-style: double; border-width: 5px; border-style: double; border-width: 5px; }
 

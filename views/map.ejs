@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 
-<head>    
+<head>
+    <% include include/header %>
     <link rel="stylesheet" type="text/css" href="css/daecheol.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
@@ -10,12 +11,12 @@
 </head>
 
 <body>
-
+    <% include include/navigator %>
     <section class="section9">
         <div>
-            <div class="leftBox">
+            <!-- <div class="leftBox">
                 <h2 class="white">Map</h2>
-            </div>
+            </div> -->
             <div class="rightBox">
                 <div id="map_div" onload="initTmap()">
                     <div id="Tmap_Map"></div>
@@ -33,7 +34,7 @@
 
     </section>
 
-    <!-- Tmap 지도 스크립트 --> 
+    <!-- Tmap 지도 스크립트 -->
     <script>
 
         function setVariables() {

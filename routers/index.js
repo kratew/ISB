@@ -25,6 +25,11 @@ module.exports = function(){
         console.log("Main Page Rendered.");
     });
 
+    router.get('/map', function(req, res){
+        res.render('./map', {title: "회원가입"});
+        console.log("Map Page Rendered.");
+    });
+
     router.get('/signin', function(req, res){
         res.render('./signin', {title: "로그인"});
         console.log("Sign In Page Rendered.");
@@ -51,6 +56,6 @@ module.exports = function(){
             successRedirect: '/',
             failureRedirect: '/signin' });
     });
-
+    
     return router;
 };

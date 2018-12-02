@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <% include include/header %>
     <title>Imagine Sensor for the Blind</title>
 </head>
+
 <body>
     <% include include/navigator %>
     <div id="main" class="scroll-container">
@@ -12,8 +14,10 @@
             <img class="sec1bg" src="./img/t​rapezoid.png">
             <div>
                 <img src="./img/ISB_verti.png">
-                <a href="/signin"><button>Sign Ip</button></a>
-                <a href="/signup"><button>Sign Up</button></a>
+                <div>
+                    <a href="/signin"><button>SIGN IN</button></a>
+                    <a href="/signup"><button>SIGN UP</button></a>
+                </div>
             </div>
         </section>
         <!-- About Us Section -->
@@ -31,14 +35,30 @@
                         <li>
                             <div class="keyword">
                                 <p class="introduce">
-                                    마! 이게 서비스다!
+                                    시각 장애인들은 장애를 극복하기 위해 소리가 눈에 보이지 않는 물체로부터 부딪혀 돌아오는 파동을 인지함으로써 자신과 그 물체 사이의 거리를 청각에
+                                    의존해 파악한다. <br>
+                                    따라서, 초음파 센서를 이용하여 시각 장애인들이 소리가 물체에 부딪혀 돌아오는 파동을 인지하는 과정을 대신 해주고, 거리의 차이에 따라 음의 높낮이를
+                                    다르게 하여 시각 장애인과 물체간의 거리감을 인지시켜주는 서비스를 개발한다.<br>
+                                    또한, 기존 내비게이션 기능을 함께 활용하여 음성 안내만으로 사용자가 가고자 하는 길을 안내해주는 동시에 보행 시 전방의 위험 지역이나 방해물을
+                                    알려주어 시각 장애인들을 위한 보다 안전한 일상 생활을 만들어 줄 수 있는 서비스를 기대할 수 있다.
                                 </p>
                             </div>
                         </li>
                         <li class="keytwo">
                             <div class="about2">
                                 <p>
-                                    마! 이게 프로젝트다!
+                                    주요한 기능 중에는 초음파 센서를 통한 공간 인지, 내비게이션, 음성인식이 있다.<br>
+                                    <br>
+                                    1. 초음파 센서를 통한 공간 인지 <br>
+                                    초음파 센서를 이용해서 주변에 보행에 방해가 되는 사물이나 지상구조물이 있는지 인지할 수 있고, 내비게이션이 가리키는 방향을 벗어나지 않도록 나침반
+                                    역할을 하는 안내음을 들려주는 기능을 구현할 예정이다. <br>
+                                    <br>
+                                    2. 내비게이션 <br>
+                                    서버에서 지도 정보를 가져와서 복잡하지 않고 쉽게 찾아갈 수 있는 단일 경로를 뽑아낸 다음, 이를 작은 경로단위로 쪼개서 음성 안내를 해주는 기능을
+                                    구현할 예정이다. <br>
+                                    <br>
+                                    3. 음성인식 <br>
+                                    음성으로 사용자의 Voice Key를 만들어서 사용자 인식을 하고, 음성으로 내비게이션에게 명령을 내리는 기능을 구현할 예정이다. <br>
                                 </p>
                             </div>
                         </li>
@@ -124,24 +144,24 @@
 
             // 네비 클릭시 이벤트
             $('nav li').click(function () {
-				var $section = $('section');
-				var $html_body = $('html, body');
-				var $dots_li = $('.dots li');
-				var $dots_li_a = $dots_li.find('a');
+                var $section = $('section');
+                var $html_body = $('html, body');
+                var $dots_li = $('.dots li');
+                var $dots_li_a = $dots_li.find('a');
 
-				var idx = $(this).index();
-				var secH = $section.height();
-				var secP = parseInt($section.css('padding-top'));
-				if (idx == 0) {
-					$html_body.animate({ scrollTop: secH * 1 + (secP * 1) });
-					$dots_li_a.removeClass('active');
-					$dots_li.eq(1).find('a').addClass('active');
-				} else {
-					$html_body.animate({ scrollTop: secH * (idx + 2) + (secP * (idx + 2)) });
-					$dots_li_a.removeClass('active');
-					$dots_li.eq(idx + 2).find('a').addClass('active');
-				}
-			});
+                var idx = $(this).index();
+                var secH = $section.height();
+                var secP = parseInt($section.css('padding-top'));
+                if (idx == 0) {
+                    $html_body.animate({ scrollTop: secH * 1 + (secP * 1) });
+                    $dots_li_a.removeClass('active');
+                    $dots_li.eq(1).find('a').addClass('active');
+                } else {
+                    $html_body.animate({ scrollTop: secH * (idx + 2) + (secP * (idx + 2)) });
+                    $dots_li_a.removeClass('active');
+                    $dots_li.eq(idx + 2).find('a').addClass('active');
+                }
+            });
 
             // 오른쪽 동그라미 버튼 클릭시 이벤트
             $('.dots li').click(function () {

@@ -1,57 +1,73 @@
-<% include include/header %>
+<!DOCTYPE html>
+<html>
 
-<div id="main" class="scroll-container">
-    <!-- Main Page Section -->
-    <section class="section1">
-    </section>
-    <!-- About Us Section -->
-    <section class="section2">
-        <div>
-            <div class="leftBox title">
-                <h2>About Us</h2>
-                <div class="pager">
-                    <div class="pager-item active">ISB 서비스 개요</div>
-                    <div class="pager-item">프로젝트 개요</div>
+<head>
+    <% include include/inc_header %>
+</head>
+
+<body>
+    <% include include/navigator %>
+    <div id="main" class="scroll-container">
+        <!-- Main Page Section -->
+        <section class="section1">
+        </section>
+        <!-- About Us Section -->
+        <section class="section2">
+            <div>
+                <div class="leftBox title">
+                    <h2>About Us</h2>
+                    <div class="pager">
+                        <div class="pager-item active">ISB 서비스 개요</div>
+                        <div class="pager-item">프로젝트 개요</div>
+                    </div>
                 </div>
-            </div>
-            <div class="rightBox">
-                <ul class="aboutSlide">
-                    <li>
-                        <div class="keyword">
-                            <p class="introduce">
-                                마! 이게 서비스다!
-                            </p>
-                        </div>
-                    </li>
-                    <li class="keytwo">
-                        <div class="about2">
-                            <p>
-                                마! 이게 프로젝트다!
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <!-- Team section -->
-    <section class="section3">
-        <div>
-            <div class="leftBox title">
-                <h2 class="White">Team</h2>
-            </div>
-            <div class="rightBox">
-                <div>
-                    <ul>
-                        <li><span>김휘림</span><span>가천대학교 컴퓨터공학과</span></li>
-                        <li><span>우대철</span><span>가천대학교 컴퓨터공학과</span></li>
-                        <li><span>최성원</span><span>가천대학교 컴퓨터공학과</span></li>
+                <div class="rightBox">
+                    <ul class="aboutSlide">
+                        <li>
+                            <div class="keyword">
+                                <p class="introduce">
+                                    마! 이게 서비스다!
+                                </p>
+                            </div>
+                        </li>
+                        <li class="keytwo">
+                            <div class="about2">
+                                <p>
+                                    마! 이게 프로젝트다!
+                                </p>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
-        </div>
-    
-    <% include include/footer %>
+        </section>
+        <!-- Team section -->
+        <section class="section3">
+            <div>
+                <div class="leftBox title">
+                    <h2 class="White">Team</h2>
+                </div>
+                <div class="rightBox">
+                    <div>
+                        <ul>
+                            <li><span>김휘림</span><span>가천대학교 컴퓨터공학과</span></li>
+                            <li><span>우대철</span><span>가천대학교 컴퓨터공학과</span></li>
+                            <li><span>최성원</span><span>가천대학교 컴퓨터공학과</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <% include include/footer %>
+        </section>
+    </div>
+    <!-- <div id="bg"></div> -->
+
+    <ul class="dots dots-left">
+        <li><a href="#1" class="active"></a></li>
+        <li><a href="#2"></a></li>
+        <li><a href="#3"></a></li>
+    </ul>
+
     <!-- Swiper JS -->
     <script src="./js/jquery-2.1.1.min.js"></script>
     <!-- Initialize Swiper -->

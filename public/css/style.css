@@ -33,6 +33,11 @@ section:after {content:""; display:block; clear:both;}
 .section8 { background: url('../img/bg8.jpg') no-repeat; }
 .section9  { background-color: #575757; }
 
+
+.section1 .sec1bg { height:125%; margin-top: -135px; margin-left:45%; opacity:0.75; }
+.section1 div { position: absolute; top:0; left:0;}
+.section1 div img { width:50%; height:auto; margin-top:80px; margin-left:73%; }
+
 .signin { background: url('../img/signin_bg.jpg') no-repeat; } /*수정*/
 .signup { background: url('../img/signin_bg.jpg') no-repeat; }
 .sign { height:60%; padding:5px; background-color: #ffffff88; }

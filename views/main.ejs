@@ -2,6 +2,7 @@
 <html>
 <head>
     <% include include/header %>
+    <title>Imagine Sensor for the Blind</title>
 </head>
 <body>
     <% include include/navigator %>
@@ -57,7 +58,7 @@
             </div>
             <% include include/footer %>
         </section>
-    </div>mdcmd
+    </div>
     <!-- <div id="bg"></div> -->
 
     <ul class="dots dots-left">
@@ -114,6 +115,27 @@
                         });
                 });
             });
+
+            // 네비 클릭시 이벤트
+            $('nav li').click(function () {
+				var $section = $('section');
+				var $html_body = $('html, body');
+				var $dots_li = $('.dots li');
+				var $dots_li_a = $dots_li.find('a');
+
+				var idx = $(this).index();
+				var secH = $section.height();
+				var secP = parseInt($section.css('padding-top'));
+				if (idx == 0) {
+					$html_body.animate({ scrollTop: secH * 1 + (secP * 1) });
+					$dots_li_a.removeClass('active');
+					$dots_li.eq(1).find('a').addClass('active');
+				} else {
+					$html_body.animate({ scrollTop: secH * (idx + 2) + (secP * (idx + 2)) });
+					$dots_li_a.removeClass('active');
+					$dots_li.eq(idx + 2).find('a').addClass('active');
+				}
+			});
 
             // 오른쪽 동그라미 버튼 클릭시 이벤트
             $('.dots li').click(function () {

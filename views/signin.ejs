@@ -1,24 +1,36 @@
 <!doctype html>
 <html>
-    <head>
-        <% include include/header %>
-    </head>
-    <body>
-        <section>
-            <div>
-                <div class="leftBox">
 
+<head>
+    <% include include/header %>
+    <title>Sign In</title>
+</head>
+
+<body>
+    <% include include/navigator %>
+    <section class="signin">
+        <div class="sign">
+            <div class="leftBox">
+                <h2>Sign In</h2>
+            </div>
+            <div class="rightBox">
+                <br>
+                <div>
+                    <label for="id">ID:</label>
+                    <input type="text" id="id" />
                 </div>
-                <div class="rightBox">
-                    <h2>Sign In</h2>
-                    <ul>
-                        <li>I D: <input type="text"></li>
-                        <li>PWD: <input type="text"></li>
-                        <li><Input type="submit" value="LogIn"><Input type="reset" value="back"></li>
-                    </ul>
+                <div>
+                    <label for="pw">PW:</label>
+                    <input type="text" id="pw" />
+                </div>
+                <div class="signBtn">
+                    <button type="submit">Sign In</button>
+                    <a href="/signup"><button>Sign Up</button></a>
                 </div>
             </div>
-            <% include include/footer %>
-        </section>
-    </body>
+        </div>
+        <% include include/footer %>
+    </section>
+</body>
+
 </html>

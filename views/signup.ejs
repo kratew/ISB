@@ -1,10 +1,52 @@
 <!doctype html>
 <html>
-    <head>
-        <% include include/header %>
-    </head>
-    <body>
-        
+
+<head>
+    <% include include/header %>
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <% include include/navigator %>
+    <section class="signup">
+        <div class="sign">
+            <div class="leftBox">
+                <h2>Sign Up</h2>
+            </div>
+            <div class="rightBox">
+                <br>
+                <div>
+                    <label for="id">ID:</label>
+                    <input type="text" id="id" />
+                </div>
+                <div>
+                    <label for="pw">PW:</label>
+                    <input type="text" id="pw" />
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" />
+                </div>
+                <div>
+                    <label for="birthday">Birthday:</label>
+                    <input type="date" id="birthday" />
+                </div>
+                <div>
+                    <label for="phone">Phone:</label>
+                    <input type="text" id="phone" />
+                </div>
+                <div>
+                    <label for="serial">Serial Number:</label>
+                    <input type="text" id="serial" />
+                </div>
+
+                <div class="signBtn">
+                    <button type="submit">Sign Up</button>
+                </div>
+            </div>
+        </div>
         <% include include/footer %>
-    </body>
+    </section>
+</body>
+
 </html>

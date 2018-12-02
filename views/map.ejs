@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>    
+    <link rel="stylesheet" type="text/css" href="css/daecheol.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- 발급 받은 app key 삽입 -->
+    <script src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=2c2a6502-a38f-4794-920b-2ea056ad77e4"></script>
+</head>
+
+<body>
+
+    <section class="section9">
+        <div>
+            <div class="leftBox">
+                <h2 class="white">Map</h2>
+            </div>
+            <div class="rightBox">
+                <div id="map_div" onload="initTmap()">
+                    <div id="Tmap_Map"></div>
+                </div>
+            </div>
+
+            <div class="user_info">
+                <p style="font-size:large; color:bisque">Serial Number</p>
+                <p style="text-align:left"> : . . . . . . . . . . . . . </p>
+                <% %>
+                <p style="font-size:large; color:lightpink">Location</p>
+                <p style="text-align:left"> : . . . . . . . . . . . . . </p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Tmap 지도 스크립트 --> 
+    <script>
+
+        function setVariables() {
+            zoom = 16;  // zoom level입니다.  0~19 레벨을 서비스 하고 있습니다. 
+        }
+
+        function initTmap() {
+            setVariables();
+            var map = new Tmap.Map({
+                div: 'Tmap_Map',
+            });
+
+            markerLayer = new Tmap.Layer.Markers();
+            map.addLayer(markerLayer);
+
+            var lonlat = new Tmap.LonLat(126.984895, 37.566369).transform("EPSG:4326", "EPSG:3857");
+            var size = new Tmap.Size(24, 38);
+            var offset = new Tmap.Pixel(-(size.w / 2), -(size.h));
+            var icon = new Tmap.Icon('http://tmapapis.sktelecom.com/upload/tmap/marker/pin_b_m_a.png', size, offset);
+
+            marker = new Tmap.Marker(lonlat, icon);
+            markerLayer.addMarker(marker);
+
+            map.setCenter(new Tmap.LonLat("126.986072", "37.570028").transform("EPSG:4326", "EPSG:3857"), 15);
+        }
+
+        initTmap();
+
+    </script>
+</body>
+
+</html>

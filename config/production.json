@@ -12,5 +12,24 @@
       "port" : 3306,
       "database" : ""
     }
+  },
+  "redis":{
+    "host": "45.119.146.33:33775",
+    "port": 6379,
+    "db": 0,
+    "prefix": "isb:"
+  },
+  "session":{
+    "type": "redis",
+    "prefix": "isbSession:",
+    "ttl": 3600,
+    "resave": true,
+    "saveUninitialized": false,
+    "cookie": {
+      "domain": "45.119.146.33:33775",
+      "secure": false
+    },
+    "name": "isbSession",
+    "secret": "isb5678"
   }
 }

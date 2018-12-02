@@ -12,5 +12,27 @@
       "port" : 3306,
       "database" : ""
     }
+  },
+  "redis":{
+    "host": "localhost",
+    "port": 6379,
+    "db": 0,
+    "prefix": "isbTest:"
+  },
+  "session":{
+    "type": "redis",
+    "prefix": "isbTestSession:",
+    "ttl": 3600,
+    "resave": true,
+    "saveUninitialized": false,
+    "cookie": {
+      "domain": "localhost",
+      "secure": false
+    },
+    "name": "isbTestSession",
+    "secret": "isb1234"
+  },
+  "passport":{
+
   }
 }

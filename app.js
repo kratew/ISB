@@ -25,6 +25,9 @@ var express = require('express');
 var fs = require('fs');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
+var redis = require('redis');
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true })); // body-parser 사용 설정.
@@ -42,6 +45,22 @@ if(process.env.NODE_ENV === "production") {
 }
 
 global.dbpool = mysql.createPool(config.mysql.dbconn);  // mysql global 변수 설정.
+global.cache = redis.createClient({host:config.redis.host}); // redis 글로벌로 사용.
+
+// 세션은 레디스를 사용함.
+app.use(session({
+    store: new RedisStore({
+        host: config.redis.host,
+        port: config.redis.port,
+        ttl: config.session.ttl,
+        prefix: config.session.prefix
+    }),
+    resave: config.session.resave,  // 세션을 항상 저장할지 지정하는 값.
+    saveUninitialized: config.session.saveUninitialized,    // 세션이 저장되기 전 초기화가 안된 상태로 미리 만들어서 저장.
+    secret: config.session.secret,  // 세션을 암호화하여 저장.
+    cookie: config.session.cookie,
+    name: config.session.name
+}));
 
 app.use('/', express.static(__dirname + '/public')); // public 디렉토리 사용 설정.
 

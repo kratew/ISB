@@ -42,6 +42,15 @@ section:after {content:""; display:block; clear:both;}
 .sign .rightBox input { font-size:20px; height:auto; width: 200px; color:#000; }
 .sign .rightBox .signBtn { margin-top:10px; margin-left:300px }
 
+/*for TeamSection*/
+.sectionTeam { background-color: #15bebe; }
+.sectionTeam .rightBox div { margin-top: 60px; }
+.sectionTeam .rightBox div ul { font-weight:bolder; float: left; }
+/* .sectionTeam .rightBox div ul { width: 50%; float: left; margin-top: 410px; opacity: 0; } */
+.sectionTeam .rightBox div ul li { font-size: 25px; color: #fff; margin-bottom: 25px;  }
+.sectionTeam .rightBox div ul li span:first-child { width: 160px; display: inline-block; }
+.sectionTeam .rightBox div ul li span:last-child { color:#d0d0d0; }
+
 section > div, nav div { width: 72%; height: 100%; margin: 0 auto; position:relative; }
 section > div {border: 0px solid red; }
 

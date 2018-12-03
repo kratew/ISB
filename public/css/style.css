@@ -24,8 +24,8 @@ section { height:100%; background-size: cover !important; background-position: c
 section:after {content:""; display:block; clear:both;}
 
 .section1 { background: url('../img/main_bg.jpg') no-repeat; } /*수정*/
-.section2 { background: url('../img/about2_bg.png') no-repeat; }
-.sectionTeam { background-color: #044778; }
+.section2 { background: url('../img/about_us.jpg') no-repeat; }
+.sectionTeam { background: url('../img/team2.jpg') no-repeat; }
 .section9 { background: url('../img/main_bg.jpg') no-repeat; } /*수정*/
 
 .section1 .sec1bg { height:125%; margin-top: -135px; margin-left:45%; opacity:0.75; }
@@ -44,17 +44,17 @@ section:after {content:""; display:block; clear:both;}
 .sign .rightBox .signBtn { margin-top:10px; margin-left:300px }
 
 /*for TeamSection*/
-.sectionTeam .rightBox div { margin-top: 60px; }
+.sectionTeam .rightBox div { margin-top: 15%; }
 .sectionTeam .rightBox div ul { font-weight:bolder; float: left; }
 /* .sectionTeam .rightBox div ul { width: 50%; float: left; margin-top: 410px; opacity: 0; } */
-.sectionTeam .rightBox div ul li { font-size: 25px; color: #fff; margin-bottom: 25px;  }
+.sectionTeam .rightBox div ul li { font-size: 25px; margin-bottom: 25px;  }
 .sectionTeam .rightBox div ul li span:first-child { width: 160px; display: inline-block; }
-.sectionTeam .rightBox div ul li span:last-child { color:#d0d0d0; }
+.sectionTeam .rightBox div ul li span:last-child { color:#493c18d0; }
 
-section > div, nav div { width: 72%; height: 100%; margin: 0 auto; position:relative; }
+section > div, nav div { width: 67%; height: 100%; margin: 0 auto; position:relative; }
 section > div {border: 0px solid red; }
 
-.section2>div .rightBox { height: 600px; overflow: hidden; }
+.section2>div .rightBox { height: 600px; overflow: hidden; width: 70%}
 .section2>div .rightBox .aboutSlide { width: 200%; height: 100%; overflow: hidden; }
 .section2>div .rightBox .aboutSlide>li { width:50%; height:calc(100% - 40px); overflow-y:auto; overflow-x: hidden; float:left; position: relative; }
 
@@ -68,19 +68,19 @@ nav { position: fixed; left: 0; top: 0; width: 100%; height: 60px; background:rg
 
 h2 { display: inline-block; position: relative; width: 140px; font-size: 28px; text-align: right; letter-spacing: -1px; color: #3d3d3d; }
 h2:before { content: ""; display: block; position: absolute; left: 0; bottom: -15px; width: 140px; height: 8px; background: #3d3d3d; }
-p { font-size: 14px; font-weight: bold; }
-.white { color: #fff;  }
-.white:before { background: #fff; }
+p { font-size: 20px; font-weight: bold; }
+.white { color: #3d3d3de3; width: 130px;  }
+.white:before { background: #3d3d3de3; }
 
 section div > div {float: left;/* width: 48%; */}
-section > div .leftBox {width: 158px;height: 100%;margin-right: 70px;}
-section > div .rightBox {width: calc(100% - 228px);position: relative;margin-top: 50px;}
+section > div .leftBox {width: 158px;height: 100%;margin-right: 50px;}
+section > div .rightBox {width: 50%; position: relative; margin-top: 30px;}
 
 .aboutSlide li { width: 100%; height:550px; display: inline-block; overflow-y:auto; }
-.aboutSlide li div p { font-size:18px; }
+.aboutSlide li div p { font-size: 20px; }
 .section2 .bx-controls-direction { display: none; }
 .section2 .bx-wrapper { margin: 0; }
-.introduce { margin-bottom: 80px; word-break: keep-all;}
+.introduce { margin-bottom: 80px; }
 /* .pager { width: 100%; position: absolute; bottom: 0; left: 50%; transform: translateX(-10%); }
 .pager-item:first-child { margin-right:8px; }
  */
@@ -101,8 +101,6 @@ section > div .rightBox {width: calc(100% - 228px);position: relative;margin-top
 .section2 .leftBox h2 { margin-bottom: 40px; }
 
 .footer { height:auto; width:100%; position:absolute; bottom:0; left:0; padding:15px; background-color:#575757dd; box-sizing: border-box; text-align: center; color: #afafaf; line-height: 2; word-break: keep-all;}
-
-section .rightBox > div { width: 90%; }
 
 .tg { width: 100%; border-collapse: collapse; border-top:2px solid #3d3d3d; border-bottom: 2px solid #3d3d3d; margin: 0 auto; font-weight: bold; position: relative; margin-top: 520px; opacity: 0; }
 .tg tr:hover { background: #fff; cursor: pointer; }
@@ -163,12 +161,47 @@ border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-
     display:block;
     text-align:justify;
     font-family: "BenchNine";
-    line-height:0.8;
     text-transform:uppercase;
     letter-spacing:0px;
   }
-
-.section2 .introduce, .about2 {
+  
+.section2 p {
+    font-weight: initial;
     font-family: 'Jua', sans-serif;
-    color:#9BC5DE; }
+    color: #141e3bd0; }
 
+.section2 .aboutBox {
+    padding: 15px;
+    background-color: #ffffff88;
+    height: 80%;
+    width: 80%;
+    border-radius: 10px;
+}
+
+/* Team섹션 배경화면 어둡게 하기 */
+.sectionTeam {
+    position: relative;
+}
+.sectionTeam::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.25));
+}
+
+.sectionTeam .teamBox {
+    padding: 15px;
+    background-color: #ffffff88;
+    height: 65%;
+    border-radius: 10px;
+}
+
+.sectionTeam span {
+    font-family: 'Jua', sans-serif;
+    font-weight: initial; }
+.sectionTeam .teamname {
+    font-size: 40px;
+}

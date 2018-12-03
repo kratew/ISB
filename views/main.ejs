@@ -199,7 +199,7 @@
 
             // section1~9까지 offset().top값 반복문
             var scArr = new Array();
-            for (var i = 1; i < 10; i++) {
+            for (var i = 1; i < 4; i++) {
                 scArr[i - 1] = $('.section' + i).offset().top;
             }
 
@@ -208,11 +208,6 @@
                 var wTop = $(this).scrollTop();
                 var $dots_li = $('.dots li');
                 var $dots_li_a = $dots_li.find('a');
-                var $section3 = $('.section3');
-                var $press_logo = $('.press_logo');
-                var $section6_snsBox = $('.section6 .snsBox');
-                var $section7_rightBox_div = $('.section7 .rightBox div');
-                var $contact = $('.contact');
 
                 if (wTop >= 0 && wTop < scArr[1]) {
                     $dots_li_a.removeClass('active');
@@ -226,36 +221,6 @@
                     $dots_li.eq(2).find('a').addClass('active');
                     $section3.find('.img2').delay(300);
                     $section3.find('img').animate({ 'opacity': '1', 'top': '52%' }, 300);
-
-                } else if (wTop >= scArr[3] && wTop < scArr[4]) {
-                    $dots_li_a.removeClass('active');
-                    $dots_li.eq(3).find('a').addClass('active');
-                    $('.section4 .swiper-container').animate({ 'opacity': '1', 'margin-top': '80px' }, 500);
-                } else if (wTop >= scArr[4] && wTop < scArr[5]) {
-                    $dots_li_a.removeClass('active');
-                    $dots_li.eq(4).find('a').addClass('active');
-                    $press_logo.find('li:nth-child(2)').delay(300);
-                    $press_logo.find('li:nth-child(3)').delay(500);
-                    $press_logo.find('li').animate({ 'opacity': '1', 'margin-top': '0' }, 500);
-                    $('.tg').animate({ 'opacity': '1', 'margin-top': '0' }, 1000);
-                } else if (wTop >= scArr[5] && wTop < scArr[6]) {
-                    $dots_li_a.removeClass('active');
-                    $dots_li.eq(5).find('a').addClass('active');
-                    $section6_snsBox.find('.co_side').animate({ 'opacity': '1', 'margin-top': '0' }, 1000);
-                    $section6_snsBox.find('.co_center').animate({ 'opacity': '1', 'margin-top': '0' }, 500);
-                } else if (wTop >= scArr[6] && wTop < scArr[7]) {
-                    $dots_li_a.removeClass('active');
-                    $dots_li.eq(6).find('a').addClass('active');
-                    $section7_rightBox_div.find('ul:nth-child(2)').delay(500);
-                    $section7_rightBox_div.find('ul').animate({ 'opacity': '1', 'margin-top': '0' }, 500);
-                } else if (wTop >= scArr[7] && wTop < scArr[8]) {
-                    $dots_li_a.removeClass('active');
-                    $dots_li.eq(7).find('a').addClass('active');
-                    $contact.find('div:nth-child(1)').animate({ 'opacity': '1', 'margin-top': '0' }, 500);
-                    $contact.find('div:nth-child(2)').animate({ 'opacity': '1', 'margin-top': '0' }, 800);
-                } else {
-                    $dots_li_a.removeClass('active');
-                    $dots_li.eq(8).find('a').addClass('active');
                 }
             });
         });

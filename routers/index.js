@@ -17,7 +17,7 @@ module.exports = function(){
     router.use(passport.initialize()); // passport(인증 모듈)를 초기화하는 미들웨어
     router.use(passport.session()); // 현재 세션 ID을 deserialized user 객체로 변경하는 미들웨어
     // router.use(passport.authenticate('session'));
-    require('../middlewares/passport.js')(passport);
+    require('../middleware/passport.js')(passport);
 
 
     router.get('/', function(req, res){

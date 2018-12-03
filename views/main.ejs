@@ -37,8 +37,10 @@
                                 <p class="introduce">
                                     시각 장애인들은 장애를 극복하기 위해 소리가 눈에 보이지 않는 물체로부터 부딪혀 돌아오는 파동을 인지함으로써 자신과 그 물체 사이의 거리를 청각에
                                     의존해 파악한다. <br>
+                                    <br>
                                     따라서, 초음파 센서를 이용하여 시각 장애인들이 소리가 물체에 부딪혀 돌아오는 파동을 인지하는 과정을 대신 해주고, 거리의 차이에 따라 음의 높낮이를
                                     다르게 하여 시각 장애인과 물체간의 거리감을 인지시켜주는 서비스를 개발한다.<br>
+                                    <br>
                                     또한, 기존 내비게이션 기능을 함께 활용하여 음성 안내만으로 사용자가 가고자 하는 길을 안내해주는 동시에 보행 시 전방의 위험 지역이나 방해물을
                                     알려주어 시각 장애인들을 위한 보다 안전한 일상 생활을 만들어 줄 수 있는 서비스를 기대할 수 있다.
                                 </p>
@@ -70,7 +72,7 @@
         <section class="sectionTeam">
             <div>
                 <div class="leftBox title">
-                    <h2 class="White">Team</h2>
+                    <h2 class="white">Team</h2>
                 </div>
                 <div class="rightBox">
                     <div>
@@ -199,7 +201,7 @@
 
             // section1~9까지 offset().top값 반복문
             var scArr = new Array();
-            for (var i = 1; i < 10; i++) {
+            for (var i = 1; i < 4; i++) {
                 scArr[i - 1] = $('.section' + i).offset().top;
             }
 
@@ -208,11 +210,6 @@
                 var wTop = $(this).scrollTop();
                 var $dots_li = $('.dots li');
                 var $dots_li_a = $dots_li.find('a');
-                var $section3 = $('.section3');
-                var $press_logo = $('.press_logo');
-                var $section6_snsBox = $('.section6 .snsBox');
-                var $section7_rightBox_div = $('.section7 .rightBox div');
-                var $contact = $('.contact');
 
                 if (wTop >= 0 && wTop < scArr[1]) {
                     $dots_li_a.removeClass('active');
@@ -226,36 +223,6 @@
                     $dots_li.eq(2).find('a').addClass('active');
                     $section3.find('.img2').delay(300);
                     $section3.find('img').animate({ 'opacity': '1', 'top': '52%' }, 300);
-
-                } else if (wTop >= scArr[3] && wTop < scArr[4]) {
-                    $dots_li_a.removeClass('active');
-                    $dots_li.eq(3).find('a').addClass('active');
-                    $('.section4 .swiper-container').animate({ 'opacity': '1', 'margin-top': '80px' }, 500);
-                } else if (wTop >= scArr[4] && wTop < scArr[5]) {
-                    $dots_li_a.removeClass('active');
-                    $dots_li.eq(4).find('a').addClass('active');
-                    $press_logo.find('li:nth-child(2)').delay(300);
-                    $press_logo.find('li:nth-child(3)').delay(500);
-                    $press_logo.find('li').animate({ 'opacity': '1', 'margin-top': '0' }, 500);
-                    $('.tg').animate({ 'opacity': '1', 'margin-top': '0' }, 1000);
-                } else if (wTop >= scArr[5] && wTop < scArr[6]) {
-                    $dots_li_a.removeClass('active');
-                    $dots_li.eq(5).find('a').addClass('active');
-                    $section6_snsBox.find('.co_side').animate({ 'opacity': '1', 'margin-top': '0' }, 1000);
-                    $section6_snsBox.find('.co_center').animate({ 'opacity': '1', 'margin-top': '0' }, 500);
-                } else if (wTop >= scArr[6] && wTop < scArr[7]) {
-                    $dots_li_a.removeClass('active');
-                    $dots_li.eq(6).find('a').addClass('active');
-                    $section7_rightBox_div.find('ul:nth-child(2)').delay(500);
-                    $section7_rightBox_div.find('ul').animate({ 'opacity': '1', 'margin-top': '0' }, 500);
-                } else if (wTop >= scArr[7] && wTop < scArr[8]) {
-                    $dots_li_a.removeClass('active');
-                    $dots_li.eq(7).find('a').addClass('active');
-                    $contact.find('div:nth-child(1)').animate({ 'opacity': '1', 'margin-top': '0' }, 500);
-                    $contact.find('div:nth-child(2)').animate({ 'opacity': '1', 'margin-top': '0' }, 800);
-                } else {
-                    $dots_li_a.removeClass('active');
-                    $dots_li.eq(8).find('a').addClass('active');
                 }
             });
         });

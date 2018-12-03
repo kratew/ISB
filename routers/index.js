@@ -42,20 +42,19 @@ module.exports = function(){
 
 
     // Sign Up
-    router.post('/signup-auth', function(req, res, next) {
-        // res.render('index', { title: 'Marketplace Untuk Anda' });
+    router.post('/signup', function(req, res, next) {
+        console.log("#### signup:newID request ");
         passport.authenticate('signup', {
             successRedirect: '/',
-            failureRedirect: '/signup',
-            failureFlash: true })
+            failureRedirect: '/signup' });
     });
 
     // Sign In
-    router.post('/signin-auth', function(req,res,next){
+    router.post('/signin', function(req,res,next){
         passport.authenticate('signin',{
             successRedirect: '/',
             failureRedirect: '/signin' });
     });
-    
+
     return router;
 };

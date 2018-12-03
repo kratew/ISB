@@ -26,6 +26,7 @@ var fs = require('fs');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var cookieParser = require('cookie-parser');
 var RedisStore = require('connect-redis')(session);
 var redis = require('redis');
 var app = express();
@@ -36,6 +37,8 @@ app.use(bodyParser.json());
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs'); // 템플릿 엔진 ejs 사용 선언. res.render 메소드에서 .ejs 생략 가능
 app.set('views', './views'); // views 파일들이 있는 경로 설정
+
+app.use(cookieParser());
 
 // ↘ 현재 개발 환경에 따른 config global 변수 설정.
 if(process.env.NODE_ENV === "production") {
@@ -68,5 +71,6 @@ app.use('/', require('./routers/index.js')());  // 라우팅 설정.
 
 // ↘ 서버 실행!
 app.listen(config.server.listen, function(){
-    console.log("Start app.listen :: Port:" + config.server.listen.port);
-})
+    console.log("Start app.listen :: Port:" + config.server.listen.port + " =================================");
+    console.log("Process running in " + process.env.NODE_ENV + " environment.");
+});

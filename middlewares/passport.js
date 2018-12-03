@@ -1,58 +1,6 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-function insertPassport(accessToken, refreshToken, profile, done) {
-    // console.log("insertPassport:", profile);
-
-    if(profile !== undefined ) {
-        // ON DUPLICATE KEY UPDATE 사용하여 최종 로그인시간 없데이트
-        dbpool.getConnection(function(err, conn) {
-            if(err) { // DB 연결 실패시
-                console.log("Connection Error:",err);
-                return done("DBError",profile)
-            }
-            // naver는 displayName값 없음
-            if(profile.provider == "naver") profile.displayName=profile.id;
-            conn.query('INSERT INTO bfc_passport_user (user_name, user_sns, user_identify_id, bfc_season_number) VALUES(?, ?, ?, 3) ON DUPLICATE KEY UPDATE mdate=NOW()', [profile.displayName, profile.provider, profile.id], function(err, result, fields) {
-                if(err) {
-                    console.log("insertPassportErr", err);
-                    conn.release();
-                    return done(err,profile); // 에러
-                }
-                /*
-                TODO: INSERT ON DUPLICATE KEY UPDATE를 하면 UPDATE시에 insertId가 무조건 1로 튀어나올때고 있는듯 한데;;;
-                If a table contains an AUTO_INCREMENT column and INSERT ... UPDATE inserts a row, the LAST_INSERT_ID() function returns the AUTO_INCREMENT value. If the statement updates a row instead, LAST_INSERT_ID() is not meaningful.
-                */
-
-                /*
-                var userid=result.insertId;
-                if(result.affectedRows == 1){ // INSERT 일때
-                    console.log("LOGIN:NEW:" + userid + ":" + profile.provider + "/" + profile.displayName);
-                } else { // UPDATE 일때
-                    conn.query('SELECT pk FROM bfc_passport_user WHERE user_sns=? AND user_identify_id=? LIMIT 1', [profile.provider, profile.id], function(err, rows, fields) {
-                        console.log("TEST:",rows);
-                        if(err || rows.length < 1) {
-                            console.log("selectPassportErr", err);
-                            conn.release();
-                            return done(err,profile); // 에러
-                        }
-                        userid=rows[0].pk;
-                    });
-                    console.log("LOGIN:RE:" + userid + ":" + profile.provider + "/" + profile.displayName);
-                }
-                */
-                conn.release();
-                return done(null, {uid:result.insertId, name:profile.displayName, sns:profile.provider, sns_id:profile.id});
-            });
-            // console.log(test.sql);
-        });
-    } else { // passport callback 실패할때
-        console.log("PassportFail:",profile)
-        done("PassportFail");
-    }
-};
-
-
 module.exports = () => {
 
     passport.serializeUser(function (user, done) { // Strategy 성공 시 호출됨
@@ -65,16 +13,22 @@ module.exports = () => {
 
     // Sign Up
     passport.use('signup', new LocalStrategy({
+        // idField: 'id',
+        // pwField: 'pw',
+        // serialnumberField: 'sn',
+        // emailField: 'em',
+        // birthField: 'bi',
+        // phoneField: 'pn',
         usernameField: 'id',
         passwordField: 'pw',
-        serialnum: 'sn',
-        email: 'em',
-        birth: 'bi',
-        phone: 'pn',
         session: true,  // 세션에 저장 여부
         passReqToCallback: true
-    }, function(req, id, pw, sn, em, bi, pn, done){
-        if(!id || !pw) { return done(null, false); }    // id, pw를 입력하지 않은 경우
+    }, function(req, id, pw, done){
+        // if(!id || !pw || !sn) {
+        //     return done(null, false);
+        // }    // id, pw, sn을 입력하지 않은 경우
+
+        console.log("#### Local Passport signup 실행됨");
 
         dbpool.getConnection(function(err, conn){
             if(err){     // DB 연결 실패시 에러핸들링
@@ -83,11 +37,16 @@ module.exports = () => {
                 return;
             }
 
+            console.log("#### dbpool.getConnection 성공.");
+
             conn.query('SELECT * FROM homepageusers WHERE id=?', [id], function (err, result) {
                 if (err) {
                     conn.release();
                     console.log("signup:sql:err:" + err)
                 } else {
+
+                    console.log("#### homepageusers DB SELECT 성공");
+
                     if(rows.length){
                         console.log("signup:err:해당하는 id가 이미 존재함.");
                         return done(false, null);
@@ -109,7 +68,7 @@ module.exports = () => {
                 }
             }); // end of conn.query
         }); // end of dbpool.getConnection
-    })); // end of passport.use('signin', new LocalStrategy({}))
+    })); // end of passport.use('signup', new LocalStrategy({}))
 
 
     // Sign In

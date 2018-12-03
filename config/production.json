@@ -26,7 +26,7 @@
     "resave": true,
     "saveUninitialized": false,
     "cookie": {
-      "domain": "45.119.146.33:33775",
+      "domain": "45.119.146.33",
       "secure": false
     },
     "name": "isbSession",

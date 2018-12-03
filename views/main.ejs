@@ -223,6 +223,9 @@
                     $dots_li.eq(2).find('a').addClass('active');
                     $section3.find('.img2').delay(300);
                     $section3.find('img').animate({ 'opacity': '1', 'top': '52%' }, 300);
+                } else {
+                    $dots_li_a.removeClass('active');
+                    $dots_li.eq(3).find('a').addClass('active');
                 }
             });
         });

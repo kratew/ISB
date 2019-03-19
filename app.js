@@ -66,12 +66,12 @@ app.use(session({
     name: config.session.name
 }));
 
-app.use(cookieSession({
-    keys: ['node_yun'],
-    cookie: {
-        maxAge: 1000 * 60 * 60  // 유효기간 1시간
-    }
-}));
+// app.use(cookieSession({
+//     keys: ['node_yun'],
+//     cookie: {
+//         maxAge: 1000 * 60 * 60  // 유효기간 1시간
+//     }
+// }));
 
 app.use('/', express.static(__dirname + '/public')); // public 디렉토리 사용 설정.
 

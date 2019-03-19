@@ -13,17 +13,11 @@ module.exports = () => {
 
     // Sign Up
     passport.use('signup', new LocalStrategy({
-        // idField: 'id',
-        // pwField: 'pw',
-        // serialnumberField: 'sn',
-        // emailField: 'em',
-        // birthField: 'bi',
-        // phoneField: 'pn',
-        usernameField: 'id',
-        passwordField: 'pw',
+        usernameField: 'username',
+        passwordField: 'password',
         session: true,  // 세션에 저장 여부
-        passReqToCallback: true
-    }, function(req, id, pw, done){
+        passReqToCallback: true // 인증을 수행하는 인증 함수로 http request를 그대로 전달할 지 여부를 결정.
+    }, function(req, username, password, done){
         // if(!id || !pw || !sn) {
         //     return done(null, false);
         // }    // id, pw, sn을 입력하지 않은 경우
@@ -73,12 +67,12 @@ module.exports = () => {
 
     // Sign In
     passport.use('signin', new LocalStrategy({
-        usernameField: 'id',
-        passwordField: 'pw',
+        usernameField: 'username',
+        passwordField: 'password',
         session: true,  // 세션에 저장 여부
-        passReqToCallback: true
-    }, function(req, id, pw, done){
-        if(!id || !pw) { return done(null, false); }    // id, pw를 입력하지 않은 경우
+        passReqToCallback: true // 인증을 수행하는 인증 함수로 http request를 그대로 전달할 지 여부를 결정.
+    }, function(req, username, password, done){
+        if(!username || !password) { return done(null, false); }    // id, pw를 입력하지 않은 경우
 
         dbpool.getConnection(function(err, conn){
             if(err){     // DB 연결 실패시 에러핸들링

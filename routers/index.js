@@ -21,9 +21,6 @@ module.exports = function(){
 
 
     router.get('/', function(req, res){
-
-        if(req.session.logined)
-
         res.render('./main', {title: "홈"});
         console.log("Main Page Rendered.");
     });
@@ -48,14 +45,14 @@ module.exports = function(){
     router.post('/signup', function(req, res, next) {
         console.log("#### signup:newID request ");
         passport.authenticate('signup', {
-            successRedirect: '/map',
+            successRedirect: '/',
             failureRedirect: '/signup' });
     });
 
     // Sign In
-    router.post('/signin', function(req, res, next){
+    router.post('/signin', function(req,res,next){
         passport.authenticate('signin',{
-            successRedirect: '/map',
+            successRedirect: '/',
             failureRedirect: '/signin' });
     });
 

@@ -17,15 +17,15 @@
                 <br>
                 <div>
                     <label for="id">ID:</label>
-                    <input type="text" id="id" placeholder="ID를 입력해주세요." required/>
+                    <input type="text" id="id" />
                 </div>
                 <div>
                     <label for="pw">PW:</label>
-                    <input type="password" id="pw" placeholder="PW를 입력해주세요." required/>
+                    <input type="text" id="pw" />
                 </div>
                 <div>
                     <label for="email">Email:</label>
-                    <input type="email" id="email" placeholder="이메일을 입력해주세요."/>
+                    <input type="email" id="email" />
                 </div>
                 <div>
                     <label for="birthday">Birthday:</label>
@@ -33,79 +33,20 @@
                 </div>
                 <div>
                     <label for="phone">Phone:</label>
-                    <input type="text" id="phone" placeholder="번호를 입력해주세요."/>
+                    <input type="text" id="phone" />
                 </div>
                 <div>
                     <label for="serialnumber">Serial Number:</label>
-                    <input type="text" id="serialnumber" placeholder="시리얼넘버를 입력해주세요."/>
+                    <input type="text" id="serialnumber" />
                 </div>
 
                 <div class="signBtn">
-                    <button type="submit" id="register">Sign Up</button>
+                    <button type="submit">Sign Up</button>
                 </div>
             </div>
         </div>
         <% include include/footer %>
     </section>
 </body>
-
-<script>
-    $('#register').off('click').on('click', function(e){
-        e.preventDefault();
-        var input_error = false;
-        var input_focus = undefined;
-        var register_id = $('#id').val();
-        var register_pw = $('#pw').val();
-        var register_email = $('#email').val();
-        var register_birth = $('#birthday').val();
-        var register_phone = $('#phone').val();
-        var register_sn = $('#serialnumber').val();
-
-        if(id.length <= 3){ // id를 3자 미만으로 입력한 경우 경고메시지
-            input_error = "ID를 제대로 입력해주세요.";
-            input_focus = '#id';
-        }
-        if(pw.length <= 3){ // pw를 3자 미만으로 입력한 경우 경고메시지
-            input_error = "PW를 제대로 입력해주세요.";
-            input_focus = '#pw';
-        }
-
-        if(input_error){
-            alert(input_error);
-            $(input_focus).focus();
-            return;
-        } else {
-            $.ajax({
-                type : "POST",
-                url : "/middlewares/passport",
-                crossDomain : false,
-                contentType : "application/json",
-                processData : false,
-                dataType : "json",
-                data : JSON.stringify({
-                    reg_id : register_id,
-                    reg_pw : register_pw,
-                    reg_email : register_email,
-                    reg_birth : register_birth,
-                    reg_phone : register_phone,
-                    reg_sn : register_sn
-                }),
-                success:function(data){
-                    var result = $.parseJSON(JSON.stringify(data));
-
-                    if(result.status == true){
-                        console.log("###SIGN UP SUCCESS!!");
-                    } else {
-                        console.log("###SIGN UP FAIL!!");
-                    }
-                },
-                error:function(xhr, status, errorThrown){
-                    console.log("###SIGN UP 통신에러!!");
-                }
-            });
-        }
-    });
-
-</script>
 
 </html>

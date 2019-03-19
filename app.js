@@ -27,9 +27,8 @@ var mysql = require('mysql');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
-// var RedisStore = require('connect-redis')(session);
-// var redis = require('redis');
-var flash = require('connect-flash');
+var RedisStore = require('connect-redis')(session);
+var redis = require('redis');
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true })); // body-parser 사용 설정.
@@ -40,7 +39,6 @@ app.set('view engine', 'ejs'); // 템플릿 엔진 ejs 사용 선언. res.render
 app.set('views', './views'); // views 파일들이 있는 경로 설정
 
 app.use(cookieParser());
-app.use(flash());
 
 // ↘ 현재 개발 환경에 따른 config global 변수 설정.
 if(process.env.NODE_ENV === "production") {
@@ -50,28 +48,22 @@ if(process.env.NODE_ENV === "production") {
 }
 
 global.dbpool = mysql.createPool(config.mysql.dbconn);  // mysql global 변수 설정.
-// global.cache = redis.createClient({host:config.redis.host}); // redis 글로벌로 사용.
+global.cache = redis.createClient({host:config.redis.host}); // redis 글로벌로 사용.
 
+// 세션은 레디스를 사용함.
 app.use(session({
-    // store: new RedisStore({
-    //     host: config.redis.host,
-    //     port: config.redis.port,
-    //     ttl: config.session.ttl,
-    //     prefix: config.session.prefix
-    // }),
-    resave: config.session.resave,  // 세션 아이디를 접속할 때마다 새롭게 발급하지 않음
-    saveUninitialized: config.session.saveUninitialized,    // 세션 아이디를 실제 사용 전에는 발급하지 않음
-    secret: config.session.secret,  // 쿠키에 저장할 connect.sid값을 암호화할 키값 입력
+    store: new RedisStore({
+        host: config.redis.host,
+        port: config.redis.port,
+        ttl: config.session.ttl,
+        prefix: config.session.prefix
+    }),
+    resave: config.session.resave,  // 세션을 항상 저장할지 지정하는 값.
+    saveUninitialized: config.session.saveUninitialized,    // 세션이 저장되기 전 초기화가 안된 상태로 미리 만들어서 저장.
+    secret: config.session.secret,  // 세션을 암호화하여 저장.
     cookie: config.session.cookie,
     name: config.session.name
 }));
-
-// app.use(cookieSession({
-//     keys: ['node_yun'],
-//     cookie: {
-//         maxAge: 1000 * 60 * 60  // 유효기간 1시간
-//     }
-// }));
 
 app.use('/', express.static(__dirname + '/public')); // public 디렉토리 사용 설정.
 

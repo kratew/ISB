@@ -10,7 +10,7 @@ var router = express.Router();
 module.exports = function(){
 
     require('express-group-routes');   // 그룹 라우팅
-    const basicAuth = require('express-basic-auth')
+    // const basicAuth = require('express-basic-auth')
 
     // 패키지
     var passport = require('passport');
@@ -97,9 +97,11 @@ module.exports = function(){
     });
 
     router.group("/login/auth", function(router) {
+        var login_success_uri = '/newboy';
+        var login_failure_uri = '/login';
 
         router.get('/naver', passport.authenticate('naver'));
-        router.get('/naver/callback', passport.authenticate('naver', { successRedirect: '/map', failureRedirect: '/login'} ));
+        router.get('/naver/callback', passport.authenticate('naver', { successRedirect: login_success_uri, failureRedirect: login_failure_uri} ));
     });
 
     // 로그아웃
@@ -116,12 +118,12 @@ module.exports = function(){
     router.group("/ajax", function(router) {
 
         //router.use(auth.authCheck); // 인증확인
-        router.get('/update_main',updateController.updateMain); // 메인페이지 업데이트
+        // router.get('/update_main',updateController.updateMain); // 메인페이지 업데이트
     });
 
 
 
-    
+
 
     return router;
 };

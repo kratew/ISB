@@ -26,12 +26,12 @@ var fs = require('fs');
 var mysql = require('mysql');
 var csrf = require('csurf');
 var bodyParser = require('body-parser');
-var redis = require('redis');
-var redisStore = require('connect-redis');
 var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
+var expressValidator = require('express-validator');
+var redis = require("redis");
 var cookieParser = require('cookie-parser');
-var cookieSession = require('cookie-session');
-var flash = require('connect-flash');
+var timeout = require('connect-timeout')
 var app = express();
 app.use(timeout('10s')) // timeout 5초 적용
 
@@ -40,9 +40,9 @@ var client = redis.createClient(6379, 'localhost');
 app.use(bodyParser.urlencoded({ extended: true })); // body-parser 사용 설정.
 app.use(bodyParser.json());
 
-app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs'); // 템플릿 엔진 ejs 사용 선언. res.render 메소드에서 .ejs 생략 가능
 app.set('views', './views'); // views 파일들이 있는 경로 설정
+app.engine('html', require('ejs').renderFile);
 
 app.disable('x-powered-by'); // for Security
 app.enable('trust proxy'); // behind elb
@@ -89,7 +89,7 @@ cache.on("error", function (err){
 
 app.use('/', express.static(__dirname + '/public')); // public 디렉토리 사용 설정.
 
-app.use('/', require('./routes/index.js')());  // 라우팅 설정.
+app.use('/', require('./routers/index.js')());  // 라우팅 설정.
 
 // Status 404 (Error) middleware
 app.use('*', require("./middlewares/errorHandler").NotFoundHandler);

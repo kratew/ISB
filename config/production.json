@@ -10,7 +10,7 @@
       "user" : "root",
       "password" : "kkrY;jk3tvrs",
       "port" : 3306,
-      "database" : ""
+      "database" : "isb"
     }
   },
   "redis":{
@@ -33,5 +33,12 @@
     },
     "name": "isbSession",
     "secret": "isb5678"
+  },
+  "passport": {
+    "naver": {
+      "clientID": "_ivpIt7aexWaL7DYEh5A",
+      "clientSecret": "zDqs8WLmLx",
+      "callbackURL": "http://localhost:3003/login/auth/naver/callback"
+    }
   }
 }

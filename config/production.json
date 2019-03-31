@@ -26,6 +26,8 @@
     "resave": true,
     "saveUninitialized": false,
     "cookie": {
+      "maxAge": 3600000,
+      "httpOnly": true,
       "domain": "45.119.146.33:33775",
       "secure": false
     },

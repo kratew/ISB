@@ -3,6 +3,72 @@ var LocalStrategy = require('passport-local').Strategy;
 
 module.exports = () => {
 
+    // ↘ 로그인 성공시 serializeUser 메소드를 통해서 사용자 정보를 세션에 저장.
+    passport.serializeUser(function(user, done){
+        done(null, user.id);
+    });
+    passport.deserializeUser(function(user, done){
+        User.findById(id, function(err, user){
+            done(err, user);
+        });
+    });
+
+    // ↘ sn이 'aaa'일 경우 sn을 done callback을 통해 serializeUser 메소드로 넘김.
+    // 인증에 실패하면 done(false, null)를 처리함.
+    passport.use(new LocalStrategy({
+        usernameField: 'sn',    // main.ejs의 <input>태그의 name값과 같아야함.
+        passwordField: 'pw',
+        passReqToCallback: true // 인증을 수행하는 인증 함수로, HTTP Request를 그대로 전달할지 여부를 결정.
+    }, function(req, sn, pw, done){
+
+
+
+        dbpool.getConnection(function(err, conn) {
+            if(err) { // DB 연결 실패시
+                console.log("DB Connection Error:",err);
+                return done("DBError",profile)
+            }
+
+            conn.query('SELECT * FROM homepageusers WHERE name = "' + sn + '"', function (err, rows) {
+                if (err) {
+                    conn.release();
+                    console.log("SQL Search 에러 : " + err);
+                    conn.release();
+                    return done(false, null);
+                }
+
+                console.log("dbcall:main:" + rows.length);
+
+                // 후보목록을 가져오는 데 실패하면 즉, 검색결과가 없으면
+                if (rows && rows instanceof Array && !rows.length) {
+                    console.log("찾는 후보가 존재하지 않습니다.");
+                    return done(false, null);
+                }
+
+                var realdata = JSON.stringify(rows);
+                res.status(200).json({status: true, data: realdata});
+                return done(null, {
+                    'sn' : sn
+                });
+            });
+
+        });
+
+
+    }));
+
+}; // end of module.exports
+
+
+
+
+/*
+
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
+module.exports = () => {
+
     passport.serializeUser(function (user, done) { // Strategy 성공 시 호출됨
         done(null, user);   // 여기의 user가 deserializeUser의 첫 매개변수로 이동.
     });
@@ -113,3 +179,5 @@ module.exports = () => {
     })); // end of passport.use('signin', new LocalStrategy({}))
 
 };  // end of module.exports
+
+*/

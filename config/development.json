@@ -13,19 +13,15 @@
       "database" : ""
     }
   },
-  "redis":{
-    "host": "45.119.146.33",
-    "port": 6379,
-    "db": 0,
-    "prefix": "isbTest:"
-  },
   "session":{
-    "type": "redis",
+
     "prefix": "isbTestSession:",
     "ttl": 3600,
     "resave": true,
     "saveUninitialized": false,
     "cookie": {
+      "maxAge": 3600000,
+      "httpOnly": true,
       "domain": "localhost",
       "secure": false
     },

@@ -15,8 +15,12 @@
             <div>
                 <img src="./img/ISB_verti.png">
                 <div>
-                    <a href="/signin"><button>SIGN IN</button></a>
-                    <a href="/signup"><button>SIGN UP</button></a>
+                    <form action="/login" method="post">
+                        <input type="text" id="sn" name="sn" placeholder="S/N 입력" required />
+                        <input type="submit" id="btn" name="btn" value="인증">
+                    </form>
+                    <!--<a href="/signin"><button>S/N LOGIN</button></a>-->
+                    <!--<a href="/signup"><button>SIGN UP</button></a>-->
                 </div>
             </div>
         </section>
@@ -230,6 +234,45 @@
                 }
             });
         });
+
+
+        // S/N 입력시 이벤트
+        // $('#btn').off("click").on('click',function(e) {
+        //     e.preventDefault();
+        //     var input_error = false;
+        //     var input_focus = undefined;
+        //     var sn_input = $('#sn').val();
+        //
+        //     if(sn_input.length != 10){
+        //         input_error = "S/N을 정확히 입력해주세요.";
+        //         input_focus = '#sn';
+        //     }
+        //
+        //     if(input_error){
+        //         alert(input_error);
+        //         $('#sn').focus();
+        //     } else {
+        //         $.ajax({
+        //             type: "POST",
+        //             url: "/login",
+        //             crossDomain:false,
+        //             contentType: "application/json",
+        //             processData: false,
+        //             dataType: "json",
+        //             data:JSON.stringify({
+        //                 sn :sn_input
+        //             }),
+        //             success:function(data){
+        //                 //...
+        //             },
+        //             error:function(xhr, status, errorThrown){
+        //                 //...
+        //             }
+        //
+        //     }); // end of ajax
+        //
+        //
+        // }});    // end of $('#btn').off("click").on('click',...)
     </script>
 </body>
 

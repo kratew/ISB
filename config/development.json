@@ -1,46 +1,38 @@
 {
-  "env": "development",
-  "fqdn": "localhost",
-  "server": {
-    "listen": {
-      "port": 3003
+  "env" : "development",
+  "fqdn" : "localhost",
+  "server" : {
+    "listen" : {"port" : 3003}
+  },
+  "mysql" : {
+    "dbconn" : {
+      "host" : "45.119.146.33",
+      "user" : "root",
+      "password" : "kkrY;jk3tvrs",
+      "port" : 3306,
+      "database" : ""
     }
   },
-  "mysql": {
-    "dbconn": {
-      "host": "45.119.146.33",
-      "user": "root",
-      "password": "kkrY;jk3tvrs",
-      "port": 3306,
-      "database": "isb"
-    }
-  },
-  "redis": {
-    "host": "localhost",
+  "redis":{
+    "host": "45.119.146.33",
     "port": 6379,
     "db": 0,
-    "prefix": "isb:"
+    "prefix": "isbTest:"
   },
-  "session": {
+  "session":{
     "type": "redis",
-    "prefix": "isbSession:",
+    "prefix": "isbTestSession:",
     "ttl": 3600,
     "resave": true,
     "saveUninitialized": false,
     "cookie": {
-      "maxAge": 3600000,
-      "httpOnly": true,
-      "domain": "localhost:3003",
+      "domain": "localhost",
       "secure": false
     },
-    "name": "isbSession",
-    "secret": "isb5678"
+    "name": "isbTestSession",
+    "secret": "isb1234"
   },
-  "passport": {
-    "naver": {
-      "clientID": "_ivpIt7aexWaL7DYEh5A",
-      "clientSecret": "zDqs8WLmLx",
-      "callbackURL": "http://localhost:3003/login/auth/naver/callback"
-    }
+  "passport":{
+
   }
 }

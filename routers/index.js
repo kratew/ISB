@@ -63,6 +63,7 @@ module.exports = function(){
             }
 
             if(data === null){ // 캐쉬 없을때
+                console.log("Main Page Rendered.");
                 res.render('./main',{title:"홈"});;
                 return;
             }
@@ -76,29 +77,18 @@ module.exports = function(){
     // 맵
 
     router.get('/map', function(req, res){
-        res.render('./map', {title: "회원가입"});
         console.log("Map Page Rendered.");
+        res.render('./map', {title: "회원가입"});
     });
 
 
     /////////////////////////////
     // Member 관련
 
-    router.get('/login', function (req, res) {
-        console.log("TryLogin:"+req.ip+":"+req.user);
-
-        // 이전에 ttl없이 발급된 connect.sid 지움
-        if ( typeof req.cookies['connect.sid'] !== undefined ) res.clearCookie('connect.sid');
-        if(req.isAuthenticated()) {
-            res.redirect('/'); // 로그인 되어있으면 redirect 처리
-        } else {
-            res.render('./member/login_form',{title:"로그인"});
-        }
-    });
-
     router.group("/login/auth", function(router) {
-        var login_success_uri = '/newboy';
-        var login_failure_uri = '/login';
+
+        var login_success_uri = '/map';
+        var login_failure_uri = '/';
 
         router.get('/naver', passport.authenticate('naver'));
         router.get('/naver/callback', passport.authenticate('naver', { successRedirect: login_success_uri, failureRedirect: login_failure_uri} ));

@@ -10,7 +10,7 @@
       "user" : "root",
       "password" : "kkrY;jk3tvrs",
       "port" : 3306,
-      "database" : ""
+      "database" : "isb"
     }
   },
   "redis":{
@@ -26,10 +26,19 @@
     "resave": true,
     "saveUninitialized": false,
     "cookie": {
+      "maxAge": 3600000,
+      "httpOnly": true,
       "domain": "45.119.146.33:33775",
       "secure": false
     },
     "name": "isbSession",
     "secret": "isb5678"
+  },
+  "passport": {
+    "naver": {
+      "clientID": "_ivpIt7aexWaL7DYEh5A",
+      "clientSecret": "zDqs8WLmLx",
+      "callbackURL": "http://http://45.119.146.33:33775//login/auth/naver/callback"
+    }
   }
 }

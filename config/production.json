@@ -38,7 +38,7 @@
     "naver": {
       "clientID": "_ivpIt7aexWaL7DYEh5A",
       "clientSecret": "zDqs8WLmLx",
-      "callbackURL": "http://http://45.119.146.33:33775//login/auth/naver/callback"
+      "callbackURL": "/login/auth/naver/callback"
     }
   }
 }
